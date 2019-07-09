@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  HomeFeedViewController.h
 //  instagram
 //
 //  Created by britneyting on 7/8/19.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface HomeFeedViewController : UIViewController
 
 @end
 
+NS_ASSUME_NONNULL_END
