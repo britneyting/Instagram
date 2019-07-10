@@ -14,9 +14,14 @@
 #import "ComposeViewController.h"
 #import "Post.h"
 
+@import Parse;
+
 @interface HomeFeedViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 
 @end
 
@@ -27,6 +32,19 @@
     // Do any additional setup after loading the view.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    [self fetchData];
+    
+    // code for activity indicator (refresh)
+    self.refreshControl = [[UIRefreshControl alloc] init]; // do self refreshControl instead of UIRefreshControl *refreshControl since we already declared the variable refreshControl in properties
+    [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0]; // inserts the activity indicator at index0 (before the first tweet)
+    
+}
+
+- (void)fetchData {
+    
+    [self.activityIndicator startAnimating];
     
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
@@ -39,15 +57,14 @@
         if (posts) {
             // do something with the array of object returned by the call
             self.posts = posts;
+            [self.tableView reloadData]; // step 7: reload the table view
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
     
-}
-
-- (void)getTimeline {
-    
+    [self.refreshControl endRefreshing];
+    [self.activityIndicator stopAnimating];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -63,18 +80,17 @@
     
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"forIndexPath:indexPath];
     
-    Post *post = self.posts[indexPath.row]; // Tweet class is blueprint for each tweet. (similar to NSDictionary *movie in FlixApp. We then call the tweets with self.tweets
+    Post *post = self.posts[indexPath.row]; // Tweet class is blueprint for each tweet.
     cell.post = post;
+    [cell setPost:post];
     cell.usernameTopLabel.text = post.author.username;
     cell.usernameBottomLabel.text = post.author.username;
     cell.captionLabel.text = post.caption;
     cell.likesLabel.text = [NSString stringWithFormat:@"%@", post.likeCount];
     cell.commentsLabel.text = [NSString stringWithFormat:@"%@", post.commentCount];
     
-    
     return cell;
 }
-
 
 - (IBAction)logout:(id)sender {
     // when logout button is pressed, rootviewcontroller will be directed to login page so that when app is pressed again, user will be directed to login page instead of home feed

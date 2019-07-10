@@ -9,6 +9,7 @@
 #import "ComposeViewController.h"
 #import "Post.h"
 #import "PostCell.h"
+#import "HomeFeedViewController.h"
 
 @interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) UIImage *originalImage;
@@ -86,8 +87,6 @@
         }
     }];
 }
-
-
 
 /*
 #pragma mark - Navigation

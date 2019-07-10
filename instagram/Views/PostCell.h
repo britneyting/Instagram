@@ -11,16 +11,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@import Parse;
+
 @interface PostCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *usernameTopLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameBottomLabel;
 
-@property (weak, nonatomic) Post *post;
+@property (strong, nonatomic) Post *post;
+@property (strong, nonatomic) IBOutlet PFImageView *photoImageView;
+
+
+
+
 
 @end
 
