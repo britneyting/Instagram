@@ -13,13 +13,14 @@
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>brit-instagram.herokuapp.com</key>
-			<dict/>
-			<key>NSIncludesSubdomains</key>
-			<true/>
-			<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
-			<true/>
-			<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-			<false/>
+			<dict>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 		</dict>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>

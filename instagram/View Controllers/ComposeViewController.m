@@ -80,6 +80,7 @@
     [Post postUserImage:self.editedImage withCaption:self.uploadText.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             NSLog(@"Successfully posted photo!");
+            [self.delegate didPost];
             [self dismissViewControllerAnimated:true completion:nil];
         }
         else {

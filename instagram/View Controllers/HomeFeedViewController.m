@@ -16,7 +16,7 @@
 
 @import Parse;
 
-@interface HomeFeedViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface HomeFeedViewController () <UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -33,19 +33,19 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    [self fetchData];
-    
     // code for activity indicator (refresh)
     self.refreshControl = [[UIRefreshControl alloc] init]; // do self refreshControl instead of UIRefreshControl *refreshControl since we already declared the variable refreshControl in properties
     [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0]; // inserts the activity indicator at index0 (before the first tweet)
+    
+    [self fetchData];
     
 }
 
 - (void)fetchData {
     
     [self.activityIndicator startAnimating];
-    
+
     // construct query
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
@@ -72,7 +72,7 @@
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
     
-    return 20;
+    return self.posts.count;
     
 }
 
@@ -106,6 +106,11 @@
 - (IBAction)compose:(id)sender {
 }
 
+- (void)didPost {
+    [self fetchData];
+    [self.tableView reloadData];
+}
+
 
 #pragma mark - Navigation
 
@@ -113,6 +118,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"segueToCompose"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    }
 }
 
 @end
