@@ -13,6 +13,8 @@
 #import "PostCell.h"
 #import "ComposeViewController.h"
 #import "Post.h"
+#import "DetailsViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @import Parse;
 
@@ -22,13 +24,13 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
-
 @end
 
 @implementation HomeFeedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -87,12 +89,26 @@
     cell.usernameBottomLabel.text = post.author.username;
     cell.captionLabel.text = post.caption;
     cell.likesLabel.text = [NSString stringWithFormat:@"%@", post.likeCount];
+    cell.likesLabel.text = [cell.likesLabel.text stringByAppendingString:@" Likes"];
     cell.commentsLabel.text = [NSString stringWithFormat:@"%@", post.commentCount];
+    cell.commentsLabel.text = [cell.commentsLabel.text stringByAppendingString:@" Comments"];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    // Configure the input format to parse the date string
+    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+    
+    // Configure output format
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    // Convert Date to String
+    cell.dateLabel.text = [formatter stringFromDate:cell.post.createdAt];
+    
     
     return cell;
 }
 
 - (IBAction)logout:(id)sender {
+    
     // when logout button is pressed, rootviewcontroller will be directed to login page so that when app is pressed again, user will be directed to login page instead of home feed
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -122,6 +138,15 @@
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
         composeController.delegate = self;
+    }
+    else if ([segue.identifier isEqualToString:@"segueToDetails"]){
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Post *post = self.posts[indexPath.row];
+        DetailsViewController *detailsViewController = [segue destinationViewController];
+        detailsViewController.post = post;
+        [self addChildViewController:detailsViewController];
+//        detailsViewController.delegate = self;
     }
 }
 

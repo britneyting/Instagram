@@ -20,13 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *commentsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameBottomLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (strong, nonatomic) Post *post;
 @property (strong, nonatomic) IBOutlet PFImageView *photoImageView;
-
-
-
-
 
 @end
 

@@ -7,6 +7,7 @@
 //
 
 #import "DetailsViewController.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface DetailsViewController ()
 
@@ -17,6 +18,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self fetchData];
+}
+
+- (void)fetchData {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    // Configure the input format to parse the date string
+    formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
+    
+    // Configure output format
+    formatter.dateStyle = NSDateFormatterShortStyle;
+    formatter.timeStyle = NSDateFormatterNoStyle;
+    // Convert Date to String
+    self.dateLabel.text = [formatter stringFromDate:self.post.createdAt];
+    
+    self.usernameLabel.text = self.post.author.username;
+    [self setPost:self.post];
+    NSURL *postURL = [NSURL URLWithString:self.post.image.url];
+    [self.photoImageView setImageWithURL:postURL];
+    self.likesLabel.text = [NSString stringWithFormat:@"%@", self.post.likeCount];
+    self.likesLabel.text = [self.likesLabel.text stringByAppendingString:@" Likes"];
+    self.commentsLabel.text = [NSString stringWithFormat:@"%@", self.post.commentCount];
+    self.commentsLabel.text = [self.commentsLabel.text stringByAppendingString:@" Comments"];
+    self.captionLabel.text = self.post.caption;
+    self.username2Label.text = self.post.author.username;
 }
 
 /*
