@@ -439,12 +439,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="143"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="xEU-xz-DXo">
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="xEU-xz-DXo">
                                             <rect key="frame" x="5" y="5" width="123" height="125"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="125" id="47I-lU-3xb"/>
                                                 <constraint firstAttribute="width" constant="123" id="lon-Ix-mZv"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="PEG-eC-shu" appends="YES" id="ES6-iT-b4L"/>
+                                            </connections>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06O-KM-5HR">
                                             <rect key="frame" x="148" y="15" width="110.5" height="27.5"/>
@@ -575,11 +579,17 @@
                         <outlet property="activityIndicator" destination="6KE-Y9-f2h" id="9E7-yt-5Pd"/>
                         <outlet property="postsHeaderLabel" destination="X73-s6-FMO" id="noe-6y-tQl"/>
                         <outlet property="profileCardView" destination="fqU-eH-BwP" id="Nmz-7w-iNt"/>
+                        <outlet property="profilePic" destination="xEU-xz-DXo" id="DW3-tE-AIb"/>
                         <outlet property="tableView" destination="DuQ-4m-UYa" id="HcF-0z-eoH"/>
                         <outlet property="usernameHeaderLabel" destination="06O-KM-5HR" id="7ip-IS-Y65"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyX-Kj-ehG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="PEG-eC-shu">
+                    <connections>
+                        <action selector="editProfilePic:" destination="Uic-X1-8N0" id="sif-hE-ZAp"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1976.8" y="744.3778110944528"/>
         </scene>

@@ -10,6 +10,7 @@
 #import "Post.h"
 #import "PostCell.h"
 #import "HomeFeedViewController.h"
+#import "ProgressHUD.h"
 
 @interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) UIImage *originalImage;
@@ -77,10 +78,12 @@
 }
 
 - (IBAction)share:(id)sender {
+    [ProgressHUD show:@"Please wait..."];
     [Post postUserImage:self.editedImage withCaption:self.uploadText.text withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if (succeeded) {
             NSLog(@"Successfully posted photo!");
             [self.delegate didPost];
+            [ProgressHUD dismiss];
             [self dismissViewControllerAnimated:true completion:nil];
         }
         else {

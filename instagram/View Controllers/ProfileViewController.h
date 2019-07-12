@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (strong, nonatomic) IBOutlet UILabel *usernameHeaderLabel;
 @property (strong, nonatomic) IBOutlet UILabel *postsHeaderLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *profilePic;
 
 @end
 
