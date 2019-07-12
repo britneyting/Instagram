@@ -21,6 +21,8 @@
 		7D6DF81622D4196C006F38EB /* HomeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6DF81522D4196C006F38EB /* HomeFeedViewController.m */; };
 		7D6DF81922D476D8006F38EB /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6DF81822D476D8006F38EB /* ComposeViewController.m */; };
 		7D6DF81D22D47CCA006F38EB /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D6DF81C22D47CCA006F38EB /* PostCell.m */; };
+		7D8A63E322D7C70500569A98 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A63E222D7C70500569A98 /* ProfileViewController.m */; };
+		7D8A63E622D7C97700569A98 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D8A63E522D7C97700569A98 /* ProfileCell.m */; };
 		9D7C47162097A9FEF692D408 /* Pods_instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E47A6D772EFD7C4DBE75FABC /* Pods_instagram.framework */; };
 		D7FB802E2D7EEC21A4ACAA44 /* Pods_instagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7FE31BA3DED2BC45CD6C2B /* Pods_instagramTests.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +73,10 @@
 		7D6DF81822D476D8006F38EB /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		7D6DF81B22D47CCA006F38EB /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		7D6DF81C22D47CCA006F38EB /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		7D8A63E122D7C70500569A98 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		7D8A63E222D7C70500569A98 /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		7D8A63E422D7C97700569A98 /* ProfileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		7D8A63E522D7C97700569A98 /* ProfileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
 		7EB8918C7FE76B58759EE8D9 /* Pods-instagramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramTests.release.xcconfig"; path = "Target Support Files/Pods-instagramTests/Pods-instagramTests.release.xcconfig"; sourceTree = "<group>"; };
 		A738357DD6BEDB652A5E2098 /* Pods-instagramUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagramUITests.debug.xcconfig"; path = "Target Support Files/Pods-instagramUITests/Pods-instagramUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB7FE31BA3DED2BC45CD6C2B /* Pods_instagramTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instagramTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +196,8 @@
 				7D6DF81822D476D8006F38EB /* ComposeViewController.m */,
 				7D12B44622D5D19E00EB4069 /* DetailsViewController.h */,
 				7D12B44722D5D19E00EB4069 /* DetailsViewController.m */,
+				7D8A63E122D7C70500569A98 /* ProfileViewController.h */,
+				7D8A63E222D7C70500569A98 /* ProfileViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -199,6 +207,8 @@
 			children = (
 				7D6DF81B22D47CCA006F38EB /* PostCell.h */,
 				7D6DF81C22D47CCA006F38EB /* PostCell.m */,
+				7D8A63E422D7C97700569A98 /* ProfileCell.h */,
+				7D8A63E522D7C97700569A98 /* ProfileCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -434,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D6DF7E622D3FB66006F38EB /* ViewController.m in Sources */,
+				7D8A63E322D7C70500569A98 /* ProfileViewController.m in Sources */,
 				7D6DF7F122D3FB68006F38EB /* main.m in Sources */,
 				7D6DF7E322D3FB66006F38EB /* AppDelegate.m in Sources */,
 				7D6DF81922D476D8006F38EB /* ComposeViewController.m in Sources */,
@@ -441,6 +452,7 @@
 				7D6DF81D22D47CCA006F38EB /* PostCell.m in Sources */,
 				7D12B44522D5109E00EB4069 /* Post.m in Sources */,
 				7D12B44822D5D19E00EB4069 /* DetailsViewController.m in Sources */,
+				7D8A63E622D7C97700569A98 /* ProfileCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
