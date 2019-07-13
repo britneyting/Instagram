@@ -44,7 +44,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init]; // do self refreshControl instead of UIRefreshControl *refreshControl since we already declared the variable refreshControl in properties
     [self.refreshControl addTarget:self action:@selector(fetchData) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0]; // inserts the activity indicator at index0 (before the first tweet)
-    
 }
 
 - (void)fetchData {
@@ -102,7 +101,6 @@
     cell.dateLabel.text = [formatter stringFromDate:cell.post.createdAt];
     
     return cell;
-    
 }
 
 - (IBAction)editProfilePic:(id)sender {

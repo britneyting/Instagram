@@ -9,8 +9,9 @@
 #import "PostCell.h"
 #import "Post.h"
 
-@implementation PostCell
+@import Parse;
 
+@implementation PostCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -28,5 +29,6 @@
     self.photoImageView.file = post[@"image"];
     [self.photoImageView loadInBackground];
 }
+
 
 @end

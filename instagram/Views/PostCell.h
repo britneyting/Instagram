@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PostCell : UITableViewCell
 
+@property (strong, nonatomic) Post *post;
 @property (weak, nonatomic) IBOutlet UILabel *usernameTopLabel;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *likesLabel;
@@ -25,13 +26,10 @@ NS_ASSUME_NONNULL_BEGIN
 // for the profile picture
 @property (strong, nonatomic) IBOutlet PFImageView *profilePictureView;
 
-@property (strong, nonatomic) Post *post;
-
 // for the post's picture
 @property (strong, nonatomic) IBOutlet PFImageView *photoImageView;
 
 // for profile picture, segue to the profileviewcontroller, but instead of current user, make a new public object that is named User and then grab all that user's details.
-
 @end
 
 NS_ASSUME_NONNULL_END

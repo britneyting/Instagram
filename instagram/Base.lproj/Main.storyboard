@@ -131,15 +131,19 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WJx-mD-tJ8" customClass="PFImageView">
-                                            <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WJx-mD-tJ8" customClass="PFImageView">
+                                            <rect key="frame" x="3" y="7" width="40" height="40"/>
+                                            <gestureRecognizers/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="mmy-Jx-Epf"/>
-                                                <constraint firstAttribute="width" constant="30" id="pYJ-Q9-SrJ"/>
+                                                <constraint firstAttribute="height" constant="40" id="mmy-Jx-Epf"/>
+                                                <constraint firstAttribute="width" constant="40" id="pYJ-Q9-SrJ"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="yLv-9S-UcR" appends="YES" id="q8O-1J-Ws7"/>
+                                            </connections>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJw-ZN-nhJ">
-                                            <rect key="frame" x="45" y="10" width="75" height="35"/>
+                                            <rect key="frame" x="48" y="10" width="75" height="35"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -150,14 +154,14 @@
                                         <constraint firstItem="yQh-zT-8JW" firstAttribute="centerY" secondItem="HGj-lH-eHu" secondAttribute="centerY" id="Gyr-wn-Al3"/>
                                         <constraint firstAttribute="bottom" secondItem="aOW-Sk-cmL" secondAttribute="bottom" constant="10" id="H75-w9-UOP"/>
                                         <constraint firstItem="yQh-zT-8JW" firstAttribute="leading" secondItem="HGj-lH-eHu" secondAttribute="trailing" constant="4" id="KpP-IM-bqT"/>
-                                        <constraint firstItem="EOr-IU-qDj" firstAttribute="top" secondItem="WJx-mD-tJ8" secondAttribute="bottom" constant="10" id="QZG-X4-OnE"/>
+                                        <constraint firstItem="EOr-IU-qDj" firstAttribute="top" secondItem="WJx-mD-tJ8" secondAttribute="bottom" constant="3" id="QZG-X4-OnE"/>
                                         <constraint firstItem="7E1-rQ-iT8" firstAttribute="leading" secondItem="0Cc-9E-jvg" secondAttribute="leading" constant="10" id="Rhg-WV-MUk"/>
                                         <constraint firstItem="HGj-lH-eHu" firstAttribute="leading" secondItem="0Cc-9E-jvg" secondAttribute="leading" constant="10" id="Ryj-dp-vbG"/>
                                         <constraint firstItem="OYX-2i-xdX" firstAttribute="top" secondItem="EOr-IU-qDj" secondAttribute="bottom" constant="5" id="WBw-VT-HcR"/>
                                         <constraint firstItem="HGj-lH-eHu" firstAttribute="top" secondItem="OYX-2i-xdX" secondAttribute="bottom" constant="10" id="YKH-St-erR"/>
                                         <constraint firstItem="aOW-Sk-cmL" firstAttribute="top" secondItem="7E1-rQ-iT8" secondAttribute="bottom" constant="10" id="Ydh-NR-kJ0"/>
-                                        <constraint firstItem="WJx-mD-tJ8" firstAttribute="leading" secondItem="0Cc-9E-jvg" secondAttribute="leading" constant="10" id="ade-wR-aXy"/>
-                                        <constraint firstItem="WJx-mD-tJ8" firstAttribute="top" secondItem="0Cc-9E-jvg" secondAttribute="top" constant="10" id="amm-cR-YbT"/>
+                                        <constraint firstItem="WJx-mD-tJ8" firstAttribute="leading" secondItem="0Cc-9E-jvg" secondAttribute="leading" constant="3" id="ade-wR-aXy"/>
+                                        <constraint firstItem="WJx-mD-tJ8" firstAttribute="top" secondItem="0Cc-9E-jvg" secondAttribute="top" constant="7" id="amm-cR-YbT"/>
                                         <constraint firstItem="MJw-ZN-nhJ" firstAttribute="top" secondItem="0Cc-9E-jvg" secondAttribute="top" constant="10" id="b3I-7r-Tie"/>
                                         <constraint firstItem="aOW-Sk-cmL" firstAttribute="leading" secondItem="0Cc-9E-jvg" secondAttribute="leading" constant="10" id="cOg-DI-bty"/>
                                         <constraint firstItem="OYX-2i-xdX" firstAttribute="leading" secondItem="0Cc-9E-jvg" secondAttribute="leading" constant="10" id="h7K-8W-A2q"/>
@@ -202,6 +206,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ub-L3-dJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="yLv-9S-UcR">
+                    <connections>
+                        <segue destination="Uic-X1-8N0" kind="show" id="UKb-3R-dJA"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2639.1999999999998" y="26.53673163418291"/>
         </scene>
@@ -634,4 +643,7 @@
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="profile_tab" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="UKb-3R-dJA"/>
+    </inferredMetricsTieBreakers>
 </document>
