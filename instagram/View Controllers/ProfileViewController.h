@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@import Parse;
+
 @interface ProfileViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *usernameHeaderLabel;

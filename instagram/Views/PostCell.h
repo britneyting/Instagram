@@ -22,8 +22,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *usernameBottomLabel;
 @property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 
+// for the profile picture
+@property (strong, nonatomic) IBOutlet PFImageView *profilePictureView;
+
 @property (strong, nonatomic) Post *post;
+
+// for the post's picture
 @property (strong, nonatomic) IBOutlet PFImageView *photoImageView;
+
+// for profile picture, segue to the profileviewcontroller, but instead of current user, make a new public object that is named User and then grab all that user's details.
 
 @end
 

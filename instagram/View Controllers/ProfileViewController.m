@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) UIImage *originalImage;
 @property (strong, nonatomic) UIImage *editedImage;
+@property (strong, nonatomic) UIImage *propic;
 
 @property (strong, nonatomic) NSArray *posts;
 
@@ -133,6 +134,29 @@
     // Do something with the images (based on your use case)
     
     [self.profilePic setImage:self.editedImage];
+    self.propic = self.editedImage;
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
+        if (error == nil) {
+            // We have a post object (of PFObject class)
+            // Get the image data and create a PFFileObject for that data
+            NSData *imageData = UIImagePNGRepresentation(self.propic);
+            PFFileObject *file = [PFFileObject fileObjectWithName:@"image.png" data:imageData];
+            
+            // Set the image data to a key of the PFObject
+            object[@"author"][@"profilePicture"] = file;
+            
+            // Save the object back to Parse backend
+            [object saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if (succeeded) {
+                    NSLog(@"Successfully uploaded new profile picture to backend");
+                } else {
+                    NSLog(@"%@", error.localizedDescription);
+                }
+            }];
+        }
+    }];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];

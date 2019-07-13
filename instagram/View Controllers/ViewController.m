@@ -22,6 +22,29 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)createAlert:(NSString *)message withTitle:(NSString *)title {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    // create a cancel action
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        // handle cancel response here. Doing nothing will dismiss the view.
+    }];
+    
+    // add the cancel action to the alertController
+    [alert addAction:cancelAction];
+    
+    // create an OK action
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) { // handle response here.
+    }];
+    
+    // add the OK action to the alert controller
+    [alert addAction:okAction];
+    
+    [self presentViewController:alert animated:YES completion:^{
+        // optional code for what happens after the alert controller has finished presenting
+    }];
+}
+
 - (void)registerUser {
     // this code is to sign a user up -- login is a separate page
     // initialize a user object
@@ -31,6 +54,17 @@
     newUser.username = self.usernameField.text;
     newUser.email = self.emailField.text;
     newUser.password = self.passwordField.text;
+    
+    if ([self.usernameField.text isEqual:@""]) {
+        [self createAlert:@"Please enter a username" withTitle:@"Username Required"];
+    }
+    else if ([self.passwordField.text isEqual:@""]) {
+        [self createAlert:@"Please enter a password" withTitle:@"Password Required"];
+    }
+    else if ([self.emailField.text isEqual:@""]) {
+        [self createAlert:@"Please enter your email" withTitle:@"Email Required"];
+    }
+    
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
     // this block of code enforces that username isn't already taken
@@ -53,6 +87,7 @@
     [PFUser logInWithUsernameInBackground:username password:password block:^(PFUser * user, NSError *  error) {
         if (error != nil) {
             NSLog(@"User log in failed: %@", error.localizedDescription);
+            [self createAlert:error.localizedDescription withTitle:@"Login Failed"];
         } else {
             NSLog(@"User logged in successfully");
             

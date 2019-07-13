@@ -93,6 +93,11 @@
     cell.commentsLabel.text = [NSString stringWithFormat:@"%@", post.commentCount];
     cell.commentsLabel.text = [cell.commentsLabel.text stringByAppendingString:@" Comments"];
     
+    //setting the profile picture
+    //borrowed code from the PostCell method setPost
+    cell.profilePictureView.file = post[@"author"][@"profilePicture"];
+    [cell.profilePictureView loadInBackground];
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     // Configure the input format to parse the date string
     formatter.dateFormat = @"E MMM d HH:mm:ss Z y";
